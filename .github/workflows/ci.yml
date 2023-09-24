@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  workflow_call
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v3
+
+      - name: Run lint
+        run: |
+          ./lint.sh
