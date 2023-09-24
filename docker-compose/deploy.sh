@@ -37,12 +37,12 @@ fi
 RELATIVE_SHELL_DIR=$(dirname "$BASH_SOURCE")
 CONTAINER_NAME=$1
 PROJECT_NAME=$2
-DOCKER_COMPOSE_FILE=${RELATIVE_SHELL_DIR}/${2:-"compose.yaml"}
+DOCKER_COMPOSE_FILE=${RELATIVE_SHELL_DIR}/${3:-"compose.yaml"}
 
 # start docker
 MAX_CHECK_TIMES=5
 
-echo "deploying $CONTAINER_NAME..."
+echo "deploying $PROJECT_NAME..."
 sudo docker compose -f $DOCKER_COMPOSE_FILE -p $PROJECT_NAME down --rmi all
 sudo docker compose -p $PROJECT_NAME -f $DOCKER_COMPOSE_FILE up -d
 
